@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -229,7 +228,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between">
             <div className="mb-8 md:mb-0">
-              <h2 className="text-2xl font-bold text-white mb-4">MediCare</h2>
+              <h2 className="text-2xl font-bold text-white mb-4">Care Point</h2>
               <p className="max-w-xs">
                 Modern healthcare management solution for patients and medical professionals.
               </p>
@@ -282,7 +281,7 @@ const Index = () => {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p>© 2025 MediCare. All rights reserved.</p>
+            <p>© 2025 Care Point. All rights reserved.</p>
             <div className="mt-4 md:mt-0 flex items-center">
               <Shield className="h-4 w-4 mr-2" />
               <span>HIPAA Compliant & Secure</span>
