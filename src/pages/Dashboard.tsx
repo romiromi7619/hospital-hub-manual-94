@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import PatientDashboard from "@/components/PatientDashboard";
 import DoctorDashboard from "@/components/DoctorDashboard";
+import AdminDashboard from "@/components/AdminDashboard";
 import { Skeleton } from "@/components/ui/skeleton";
 import Navbar from "@/components/Navbar";
 
@@ -49,7 +50,13 @@ const Dashboard = () => {
     <>
       <Navbar />
       <div className="container mx-auto px-4 py-8">
-        {user?.role === "doctor" ? <DoctorDashboard /> : <PatientDashboard />}
+        {user?.role === "doctor" ? (
+          <DoctorDashboard />
+        ) : user?.role === "admin" ? (
+          <AdminDashboard />
+        ) : (
+          <PatientDashboard />
+        )}
       </div>
     </>
   );

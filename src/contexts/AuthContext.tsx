@@ -45,7 +45,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     // Mock user data
     let mockUser: User;
     
-    if (email.includes("doctor")) {
+    if (email.includes("admin")) {
+      mockUser = {
+        id: "a-" + Math.random().toString(36).substr(2, 9),
+        name: "Admin " + email.split("@")[0],
+        email,
+        role: "admin"
+      };
+    } else if (email.includes("doctor")) {
       mockUser = {
         id: "d-" + Math.random().toString(36).substr(2, 9),
         name: "Dr. " + email.split("@")[0],
@@ -77,6 +84,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const mockUser = {
       id: role === "doctor" 
         ? "d-" + Math.random().toString(36).substr(2, 9)
+        : role === "admin"
+        ? "a-" + Math.random().toString(36).substr(2, 9)
         : "p-" + Math.random().toString(36).substr(2, 9),
       name,
       email,

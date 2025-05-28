@@ -31,14 +31,29 @@ const Navbar = () => {
               <Link to="/appointments" className="text-gray-600 hover:text-primary transition-colors">
                 Appointments
               </Link>
+              {user?.role === "patient" && (
+                <>
+                  <Link to="/purchase" className="text-gray-600 hover:text-primary transition-colors">
+                    Purchase
+                  </Link>
+                  <Link to="/insurance" className="text-gray-600 hover:text-primary transition-colors">
+                    Insurance
+                  </Link>
+                </>
+              )}
               {user?.role === "doctor" && (
                 <Link to="/patients" className="text-gray-600 hover:text-primary transition-colors">
                   Patients
                 </Link>
               )}
+              {user?.role === "admin" && (
+                <Link to="/admin" className="text-gray-600 hover:text-primary transition-colors">
+                  Admin Panel
+                </Link>
+              )}
               <div className="ml-4 flex items-center space-x-2">
                 <span className="text-sm text-gray-500">
-                  {user?.role === "doctor" ? "Doctor" : "Patient"}: {user?.name}
+                  {user?.role === "doctor" ? "Doctor" : user?.role === "admin" ? "Admin" : "Patient"}: {user?.name}
                 </span>
                 <Button variant="ghost" size="sm" onClick={handleLogout}>
                   <LogOut className="h-4 w-4 mr-2" /> Logout
@@ -84,6 +99,24 @@ const Navbar = () => {
                 >
                   Appointments
                 </Link>
+                {user?.role === "patient" && (
+                  <>
+                    <Link 
+                      to="/purchase" 
+                      className="text-gray-600 hover:text-primary transition-colors py-2"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Purchase
+                    </Link>
+                    <Link 
+                      to="/insurance" 
+                      className="text-gray-600 hover:text-primary transition-colors py-2"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Insurance
+                    </Link>
+                  </>
+                )}
                 {user?.role === "doctor" && (
                   <Link 
                     to="/patients" 
@@ -93,9 +126,18 @@ const Navbar = () => {
                     Patients
                   </Link>
                 )}
+                {user?.role === "admin" && (
+                  <Link 
+                    to="/admin" 
+                    className="text-gray-600 hover:text-primary transition-colors py-2"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Admin Panel
+                  </Link>
+                )}
                 <div className="pt-2 border-t">
                   <div className="text-sm text-gray-500 mb-2">
-                    {user?.role === "doctor" ? "Doctor" : "Patient"}: {user?.name}
+                    {user?.role === "doctor" ? "Doctor" : user?.role === "admin" ? "Admin" : "Patient"}: {user?.name}
                   </div>
                   <Button variant="outline" size="sm" onClick={handleLogout} className="w-full">
                     <LogOut className="h-4 w-4 mr-2" /> Logout
